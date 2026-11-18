@@ -180,6 +180,7 @@ import org.h2.test.unit.TestCollation;
 import org.h2.test.unit.TestCompress;
 import org.h2.test.unit.TestConcurrentJdbc;
 import org.h2.test.unit.TestConnectionInfo;
+import org.h2.test.unit.TestDaCapoTPCC;
 import org.h2.test.unit.TestDate;
 import org.h2.test.unit.TestDateIso8601;
 import org.h2.test.unit.TestDateTimeTemplate;
@@ -973,6 +974,9 @@ kill -9 `jps -l | grep "org.h2.test." | cut -d " " -f 1`
     private void testUtils() {
         System.out.println();
         System.out.println("Test utilities (" + Utils.getMemoryUsed() + " KB used)");
+
+        // DaCapo's TPC-C driver, which sbom.exe's workload for h2 runs
+        addTest(new TestDaCapoTPCC());
 
         // mv store
         addTest(new TestCacheConcurrentLIRS());
